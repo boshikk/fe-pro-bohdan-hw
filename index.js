@@ -1,27 +1,11 @@
-function addNumbers() {
-  const firstNumber = Number(prompt("Type a number"));
-  const secondNumber = Number(prompt("Type one more number"));
-  return alert(firstNumber + secondNumber);
-}
-addNumbers();
+function mathOperations() {
+  const num1 = Number(prompt("Please type the first number ;)"));
+  const num2 = Number(prompt("Please type the second number ;)"));
 
-function subtractNumbers() {
-  const firstNumber = Number(prompt("Type a number"));
-  const secondNumber = Number(prompt("Type one more number"));
-  return alert(firstNumber - secondNumber);
+  return alert(`${num1} + ${num2} = ${num1 + num2}
+${num1} - ${num2} = ${num1 - num2}
+${num1} * ${num2} = ${num1 * num2}
+${num1} / ${num2} = ${num1 / num2}`);
 }
-subtractNumbers();
 
-function multiplyNumbers() {
-  const firstNumber = Number(prompt("Type a number"));
-  const secondNumber = Number(prompt("Type one more number"));
-  return alert(firstNumber * secondNumber);
-}
-multiplyNumbers();
-
-function divideNumbers() {
-  const firstNumber = Number(prompt("Type a number"));
-  const secondNumber = Number(prompt("Type one more number"));
-  return alert(firstNumber / secondNumber);
-}
-divideNumbers();
+mathOperations();
