@@ -19,8 +19,9 @@ function userPortrait() {
   }
   const currentYear = 2023;
   const userAge = currentYear - userBirthYear;
-  return alert(
-    `${userAge}
+
+  if (userBirthYear && userCity && userFavoriteSport) {
+    return alert(`${userAge} 
 You live in the ${
       userCity === "Kyiv" || userCity === "Washington" || userCity === "London"
         ? "capital"
@@ -34,8 +35,28 @@ ${
     : userFavoriteSport === "tennis"
     ? "Cool! You wanna be like Novak Djokovic?"
     : ""
+}`);
+  } else if (!userCity) {
+    return alert(
+      `${
+        !userBirthYear || userBirthYear === ""
+          ? "That's so sad that you don't want to tell us about your year of birth ;("
+          : userAge
+      }
+That's so sad that you don't want to tell us about the city you live in ;(
+${
+  userFavoriteSport === "soccer"
+    ? "Cool! You wanna be like Christiano Ronaldo?"
+    : userFavoriteSport === "basketball"
+    ? "Cool! You wanna be like Michael Jordan?"
+    : userFavoriteSport === "tennis"
+    ? "Cool! You wanna be like Novak Djokovic?"
+    : ""
+    ? !userFavoriteSport
+    : "That's so sad that you don't want to tell us about your favorite sport ;("
 }`
-  );
+    );
+  }
 }
 
 userPortrait();
