@@ -18,9 +18,8 @@ for (let i = 10; i < 101; i++) {
 
 const num = 81;
 for (let i = 1; i < 101; i++) {
-  if (i ** 2 <= num) {
-    console.log(i);
-  }
+  if (i ** 2 > num) break;
+  console.log(i);
 }
 
 // 4
@@ -42,13 +41,11 @@ console.log(
 );
 
 // 5
-const num3 = 27;
+const num3 = 85;
 const givenNumber = 3;
-let isTrue;
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= num3; i++) {
   if (num3 === givenNumber ** i) {
-    isTrue = true;
+    console.log(`We can get ${num3} by raising it to the power of ${i} `);
+    break;
   }
 }
-
-console.log(`${isTrue ? "Yes, we can!" : "No, we can't"}`);
