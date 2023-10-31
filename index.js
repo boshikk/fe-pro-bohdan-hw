@@ -1,104 +1,54 @@
 // 1
 let arr = [];
-for (let i = 10; i < 21; i++) {
-  arr.push(i);
+const step = 0.5;
+for (let i = 20; i < 31; i++) {
+  arr.push(i, i + step);
 }
-
-console.log(arr.toString());
+console.log(arr.toString().replaceAll(",", " "));
 
 // 2
-for (let i = 10; i < 21; i++) {
-  console.log(i ** 2);
+const hryvnyaInDollar = 27;
+for (let i = 10; i < 101; i++) {
+  if (i % 10 === 0) {
+    console.log(`$${i} equals ${hryvnyaInDollar * i} hrv`);
+  }
 }
 
 // 3
-for (let i = 7; i < 71; i++) {
-  if (i % 7 === 0) {
+
+const num = 81;
+for (let i = 1; i < 101; i++) {
+  if (i ** 2 <= num) {
     console.log(i);
   }
 }
 
 // 4
-let sum = 0;
-for (let i = 1; i < 16; i++) {
-  if (Number.isInteger(i)) {
-    sum += i;
-  }
-}
-console.log(sum);
 
-//5
-let sum1 = 1;
-for (let i = 15; i < 36; i++) {
-  if (Number.isInteger(i)) {
-    sum1 *= i;
-  }
-}
-console.log(sum1);
-
-// 6
-const numbersAmmount = 500;
-let sum2 = 0;
-for (let i = 1; i < 501; i++) {
-  if (Number.isInteger(i)) {
-    sum2 += i;
-  }
-}
-console.log(sum2 / numbersAmmount);
-
-// 7
-let sum3 = 0;
-for (let i = 30; i < 81; i++) {
-  if (i % 2 === 0) {
-    sum3 += i;
-  }
-}
-console.log(sum3);
-
-// 8
+const num2 = 17;
 let arr2 = [];
-for (let i = 100; i < 201; i++) {
-  if (i % 3 === 0) {
+for (let i = 2; i < num2; i++) {
+  if (num2 % i === 0) {
     arr2.push(i);
   }
 }
-console.log(arr2.toString());
 
-// 9
+console.log(
+  `${
+    arr2.length >= 1
+      ? `${num2} is not prime number`
+      : `${num2} is a prime number`
+  }`
+);
 
-const num4 = 99;
-let arr3 = [];
-for (let i = 1; i <= num4; i++) {
-  if (num4 % i === 0) {
-    arr3.push(i);
+// 5
+const num3 = 27;
+const givenNumber = 3;
+let isTrue;
+for (let i = 1; i <= 10; i++) {
+  if (num3 === givenNumber ** i) {
+    isTrue = true;
   }
 }
-console.log(arr3.toString());
 
-// 10
-const num5 = 100;
-let arr4 = [];
-for (let i = 1; i <= num5; i++) {
-  if (num5 % i === 0 && i % 2 === 0) {
-    arr4.push(i);
-  }
-}
-console.log(arr4.length);
-
-// 11
-const num6 = 20;
-let sum4 = 0;
-for (let i = 1; i <= num6; i++) {
-  if (num6 % i === 0 && i % 2 === 0) {
-    sum4 += i;
-  }
-}
-console.log(sum4);
-
-// 12
-
-for (let i = 1; i < 11; i++) {
-  for (let y = 1; y < 11; y++) {
-    console.log(i, y, i * y);
-  }
-}
+console.log(`${isTrue ? "Yes, we can!" : "No, we can't"}`);
