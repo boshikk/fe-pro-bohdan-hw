@@ -1,10 +1,13 @@
 // 1
-let arr = [];
+let result = "";
 for (let i = 10; i < 21; i++) {
-  arr.push(i);
+  result += i;
+  if (i < 20) {
+    result += ", ";
+  }
 }
-
-console.log(arr.toString());
+console.log(result);
+// console.log(arr.toString());
 
 // 2
 for (let i = 10; i < 21; i++) {
@@ -21,28 +24,22 @@ for (let i = 7; i < 71; i++) {
 // 4
 let sum = 0;
 for (let i = 1; i < 16; i++) {
-  if (Number.isInteger(i)) {
-    sum += i;
-  }
+  sum += i;
 }
 console.log(sum);
 
 //5
 let sum1 = 1;
 for (let i = 15; i < 36; i++) {
-  if (Number.isInteger(i)) {
-    sum1 *= i;
-  }
+  sum1 *= i;
 }
 console.log(sum1);
 
 // 6
 const numbersAmmount = 500;
 let sum2 = 0;
-for (let i = 1; i < 501; i++) {
-  if (Number.isInteger(i)) {
-    sum2 += i;
-  }
+for (let i = 1; i <= numbersAmmount; i++) {
+  sum2 += i;
 }
 console.log(sum2 / numbersAmmount);
 
@@ -56,34 +53,30 @@ for (let i = 30; i < 81; i++) {
 console.log(sum3);
 
 // 8
-let arr2 = [];
 for (let i = 100; i < 201; i++) {
   if (i % 3 === 0) {
-    arr2.push(i);
+    console.log(i);
   }
 }
-console.log(arr2.toString());
 
 // 9
 
 const num4 = 99;
-let arr3 = [];
 for (let i = 1; i <= num4; i++) {
   if (num4 % i === 0) {
-    arr3.push(i);
+    console.log(i);
   }
 }
-console.log(arr3.toString());
 
 // 10
 const num5 = 100;
-let arr4 = [];
+let sum5 = 0;
 for (let i = 1; i <= num5; i++) {
   if (num5 % i === 0 && i % 2 === 0) {
-    arr4.push(i);
+    sum5 += 1;
   }
 }
-console.log(arr4.length);
+console.log(sum5);
 
 // 11
 const num6 = 20;
