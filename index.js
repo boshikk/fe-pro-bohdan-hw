@@ -1,12 +1,20 @@
-const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+const arrayLength = Number(prompt("Enter the array length:"));
+console.log(arrayLength);
 
-const generateKey = function (length, characters) {
-  let result = "";
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+const userArray = [];
+
+if (isNaN(arrayLength) || arrayLength < 0) {
+  alert("Please, enter the correct number that is over 0.");
+} else {
+  for (let i = 0; i < arrayLength; i++) {
+    const element = prompt(`Enter the array element ${i + 1}: `);
+
+    if (!isNaN(element)) {
+      userArray.push(Number(element));
+    } else {
+      userArray.push(element);
+    }
   }
-  return result;
-};
+}
 
-console.log(generateKey(12, characters));
+console.log("Out array:", userArray);
