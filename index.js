@@ -1,7 +1,12 @@
-const array = [431, 523, "Dan", "Bohdan", 1996];
+const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-const removeElementArray = function (array, item) {
-  return array.filter((el) => el !== item);
+const generateKey = function (length, characters) {
+  let result = "";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 };
 
-removeElementArray(array, "Dan");
+console.log(generateKey(12, characters));
