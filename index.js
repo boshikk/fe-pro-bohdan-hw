@@ -1,97 +1,81 @@
+const arr = [
+  16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54,
+  76, -4, 12, -35, 4, 47,
+];
+
 // 1
-let result = "";
-for (let i = 10; i < 21; i++) {
-  result += i;
-  if (i < 20) {
-    result += ", ";
-  }
-}
-console.log(result);
-// console.log(arr.toString());
+const sumOfNumbers = arr.reduce((acc, cur) => acc + cur);
+const ammountOfPositiveNumbers = arr.filter((num) => num > 0).length;
+console.log(sumOfNumbers, ammountOfPositiveNumbers);
 
 // 2
-for (let i = 10; i < 21; i++) {
-  console.log(i ** 2);
+let index = 0;
+let value = arr[0];
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] < value) {
+    value = arr[i];
+    index = i;
+  }
 }
+console.log(value, index);
 
 // 3
-for (let i = 7; i < 71; i++) {
-  if (i % 7 === 0) {
-    console.log(i);
+let index2 = 0;
+let value2 = arr[0];
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] > value) {
+    value = arr[i];
+    index = i;
   }
 }
-
+console.log(value, index);
 // 4
-let sum = 0;
-for (let i = 1; i < 16; i++) {
-  sum += i;
-}
-console.log(sum);
 
-//5
-let sum1 = 1;
-for (let i = 15; i < 36; i++) {
-  sum1 *= i;
-}
-console.log(sum1);
+const ammountOfNegativeNumbers = arr.filter((num) => num < 0).length;
+console.log(ammountOfNegativeNumbers);
+
+// 5
+
+const ammountOfOddPositiveNumbers = arr.filter(
+  (num) => num > 0 && num % 2 !== 0
+).length;
+console.log(ammountOfOddPositiveNumbers);
 
 // 6
-const numbersAmmount = 500;
-let sum2 = 0;
-for (let i = 1; i <= numbersAmmount; i++) {
-  sum2 += i;
-}
-console.log(sum2 / numbersAmmount);
+const ammountOfEvenPositiveNumbers = arr.filter(
+  (num) => num > 0 && num % 2 === 0
+).length;
+console.log(ammountOfEvenPositiveNumbers);
 
 // 7
-let sum3 = 0;
-for (let i = 30; i < 81; i++) {
-  if (i % 2 === 0) {
-    sum3 += i;
-  }
-}
-console.log(sum3);
+const sumOfEvenPositiveNumbers = arr
+  .filter((num) => num > 0 && num % 2 === 0)
+  .reduce((acc, cur) => acc + cur, 0);
+console.log(sumOfEvenPositiveNumbers);
 
 // 8
-for (let i = 100; i < 201; i++) {
-  if (i % 3 === 0) {
-    console.log(i);
-  }
-}
+
+const sumOfOddPositiveNumbers = arr
+  .filter((num) => num > 0 && num % 2 !== 0)
+  .reduce((acc, cur) => acc + cur, 0);
+console.log(sumOfOddPositiveNumbers);
 
 // 9
 
-const num4 = 99;
-for (let i = 1; i <= num4; i++) {
-  if (num4 % i === 0) {
-    console.log(i);
-  }
-}
+const productOfPositiveNumbers = arr
+  .filter((num) => num > 0)
+  .reduce((acc, cur) => acc * cur, 1);
+console.log(productOfPositiveNumbers);
 
 // 10
-const num5 = 100;
-let sum5 = 0;
-for (let i = 1; i <= num5; i++) {
-  if (num5 % i === 0 && i % 2 === 0) {
-    sum5 += 1;
+let maxValue = arr[0];
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] > maxValue) {
+    maxValue = arr[i];
   }
 }
-console.log(sum5);
 
-// 11
-const num6 = 20;
-let sum4 = 0;
-for (let i = 1; i <= num6; i++) {
-  if (num6 % i === 0 && i % 2 === 0) {
-    sum4 += i;
-  }
-}
-console.log(sum4);
-
-// 12
-
-for (let i = 1; i < 11; i++) {
-  for (let y = 1; y < 11; y++) {
-    console.log(i, y, i * y);
-  }
-}
+const nullifiedArr = arr.map((num) =>
+  num !== maxValue ? (num = 0) : maxValue
+);
+console.log(maxValue, nullifiedArr);
