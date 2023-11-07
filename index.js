@@ -1,5 +1,6 @@
+// 1
+
 const arrayLength = Number(prompt("Enter the array length:"));
-console.log(arrayLength);
 
 const userArray = [];
 
@@ -8,13 +9,17 @@ if (isNaN(arrayLength) || arrayLength < 0) {
 } else {
   for (let i = 0; i < arrayLength; i++) {
     const element = prompt(`Enter the array element ${i + 1}: `);
-
-    if (!isNaN(element)) {
-      userArray.push(Number(element));
-    } else {
-      userArray.push(element);
-    }
+    userArray.push(Number(element));
   }
 }
 
-console.log("Out array:", userArray);
+console.log(userArray);
+
+// 2
+userArray.sort((a, b) => a - b);
+console.log(userArray);
+
+// 3
+
+userArray.splice(2, 3);
+console.log(userArray);
