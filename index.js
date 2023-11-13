@@ -1,9 +1,11 @@
-const pow = (num, degree) => {
-  if (degree === 0) {
-    return 1;
-  } else {
-    return num * pow(num, degree - 1);
-  }
-};
+const sum = (() => {
+  let a = 0;
+  return (number) => {
+    a += number;
+    return a;
+  };
+})();
 
-console.log(pow(2, 4));
+console.log(sum(3));
+console.log(sum(5));
+console.log(sum(20));
