@@ -74,4 +74,4 @@ const sumBalancesFunction = function (array) {
   return sumBalances;
 };
 
-// console.log(sumBalancesFunction(users));
+console.log(sumBalancesFunction(users));
