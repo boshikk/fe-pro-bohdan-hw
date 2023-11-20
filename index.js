@@ -55,23 +55,39 @@ let users = [
   },
 ];
 
-const sumBalancesFunction = function (array) {
-  const balanceOver2000 = users
-    .filter((user) => user.balance.split("").slice(1).join("") > "2,000.00")
-    .map(
-      (item) =>
-        (item.numberBalance = item.balance
-          .split("")
-          .slice(1)
-          .join("")
-          .replace(",", ""))
-    );
+// const sumBalancesFunction = function (array) {
+//   const balanceOver2000 = users
+//     .filter((user) => user.balance.split("").slice(1).join("") > "2,000.00")
+//     .map(
+//       (item) =>
+//         (item.numberBalance = item.balance
+//           .split("")
+//           .slice(1)
+//           .join("")
+//           .replace(",", ""))
+//     );
 
-  const sumBalances = balanceOver2000
-    .reduce((sum, cur) => sum + parseFloat(cur), 0)
-    .toFixed(2);
+//   const sumBalances = balanceOver2000
+//     .reduce((sum, cur) => sum + parseFloat(cur), 0)
+//     .toFixed(2);
 
-  return sumBalances;
+//   return sumBalances;
+// };
+
+// console.log(sumBalancesFunction(users));
+
+const sumBalancesFunction = (array) => {
+  const userWithHighBalance = array.filter(
+    (user) => parseFloat(user.balance.replace(/[^\d.]+/g, "")) > 2000
+  );
+  console.log(userWithHighBalance);
+
+  const sumOfBalances = array.reduce((sum, cur) => {
+    let balanceValue = parseFloat(cur.balance.replace(/[^\d.]+/g, ""));
+    return sum + balanceValue;
+  }, 0);
+
+  return sumOfBalances;
 };
 
 console.log(sumBalancesFunction(users));
