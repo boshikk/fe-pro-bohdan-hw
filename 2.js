@@ -1,32 +1,54 @@
 class Person {
-  constructor(name, gender) {
+  constructor(name, age) {
     this.name = name;
-    this.gender = gender;
+    this.age = age;
+  }
+  personInfo() {
+    console.log(`Name: ${this.name}, Age: ${this.age} years old`);
   }
 }
 
-const dan = new Person("Bohdan Dmytrenko", "male");
-const helen = new Person("Olena Dmytrenko", "female");
-const dean = new Person("Dean Winchester", "male");
+const dan = new Person("Bohdan Dmytrenko", 27);
+const helen = new Person("Olena Dmytrenko", 51);
 
-class Apartment {
-  constructor() {
-    this.residents = [];
+class Car {
+  constructor(brand, model, productionYear, numberPlate) {
+    this.brand = brand;
+    this.model = model;
+    this.productionYear = productionYear;
+    this.numberPlate = numberPlate;
+    this.owner = "";
   }
-  addResident(person) {
-    if (person instanceof Person) {
-      this.residents.push(person);
+
+  setAnOwner(person) {
+    if (person instanceof Person && person.age > 18) {
+      this.owner = person;
+    } else {
+      console.log("This person is under 18! It is prohibited to drive a car!");
+    }
+  }
+
+  displayInfo() {
+    console.log(`Brand: ${this.brand},
+Model: ${this.model}, 
+Year: ${this.productionYear},
+Number Plate: ${this.numberPlate}`);
+    if (this.owner) {
+      this.owner.personInfo();
+    } else {
+      console.log("No owner assigned!");
     }
   }
 }
 
-const apartment1 = new Apartment();
-apartment1.addResident(dan);
-console.log(apartment1);
+const tesla = new Car("Tesla", "Model 3", 2023, "AA3272");
+console.log(tesla);
+tesla.setAnOwner(dan);
+console.log(tesla);
+tesla.displayInfo();
 
-apartment1.addResident(helen);
-console.log(apartment1);
-
-const apartment2 = new Apartment();
-apartment2.addResident(dean);
-console.log(apartment2);
+const bmw = new Car("BMW", "X5", 2021, "AB1515");
+console.log(bmw);
+bmw.setAnOwner(helen);
+console.log(bmw);
+bmw.displayInfo();

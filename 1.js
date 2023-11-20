@@ -1,11 +1,14 @@
-class Human {
-  constructor(name, gender) {
+class Person {
+  constructor(name, age) {
     this.name = name;
-    this.gender = gender;
+    this.age = age;
+  }
+  personInfo() {
+    console.log(`${this.name} is ${this.age} years old`);
   }
 }
 
-const dan = new Human("Bohdan Dmytrenko", "male");
-const helen = new Human("Olena Dmytrenko", "female");
+const dan = new Person("Bohdan Dmytrenko", 27);
+const helen = new Person("Olena Dmytrenko", 51);
 
-console.log(dan, helen);
+console.log(dan.personInfo(), helen.personInfo());
