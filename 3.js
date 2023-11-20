@@ -54,3 +54,12 @@ console.log(building1);
 building1.addAppartment(apartment2);
 console.log(building1);
 building1.addAppartment(apartment3);
+
+const building2 = new Building(40);
+console.log(building2);
+
+building2.addAppartment(apartment1);
+console.log(building2);
+building2.addAppartment(apartment2);
+console.log(building2);
+building2.addAppartment(apartment3);

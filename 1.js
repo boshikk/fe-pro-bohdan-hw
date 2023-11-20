@@ -1,11 +1,11 @@
-class Human {
+class Person {
   constructor(name, gender) {
     this.name = name;
     this.gender = gender;
   }
 }
 
-const dan = new Human("Bohdan Dmytrenko", "male");
-const helen = new Human("Olena Dmytrenko", "female");
+const dan = new Person("Bohdan Dmytrenko", "male");
+const helen = new Person("Olena Dmytrenko", "female");
 
 console.log(dan, helen);
