@@ -1,15 +1,9 @@
 class SuperMath {
   check(obj) {
     if (this.isValidOperator(obj.znak)) {
-      const userResponse = prompt(
-        `Do you want to perform ${obj.znak} with ${obj.X} and ${obj.Y}? (yes/no)`
-      );
-
-      if (userResponse.toLowerCase() === "yes") {
-        const result = this[obj.znak](obj.X, obj.Y);
+      if (this.confirmOperation(obj)) {
+        const result = this[obj.znak](obj.x, obj.y);
         console.log(`Result: ${result}`);
-      } else {
-        this.input();
       }
     } else {
       console.log(
@@ -19,14 +13,25 @@ class SuperMath {
     }
   }
 
+  confirmOperation(obj) {
+    const userResponse = confirm(
+      `Do you want to perform ${obj.znak} with ${obj.x} and ${obj.y}?`
+    );
+
+    if (!userResponse) {
+      this.input();
+    }
+    return userResponse;
+  }
+
   input() {
-    const newX = parseFloat(prompt("Enter a new value for X:"));
-    const newY = parseFloat(prompt("Enter a new value for Y:"));
+    const newX = parseFloat(prompt("Enter a new value for x:"));
+    const newY = parseFloat(prompt("Enter a new value for y:"));
     const newOperator = prompt(
       "Enter a mathematical operator (+, -, /, *, %):"
     );
 
-    this.check({ X: newX, Y: newY, znak: newOperator });
+    this.check({ x: newX, y: newY, znak: newOperator });
   }
 
   isValidOperator(operator) {
@@ -56,6 +61,6 @@ class SuperMath {
 }
 
 const mathCalculator = new SuperMath();
-const mathObject = { X: 12, Y: 3, znak: "/" };
+const mathObject = { x: 12, y: 3, znak: "/" };
 
 mathCalculator.check(mathObject);
