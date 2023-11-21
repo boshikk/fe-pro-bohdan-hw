@@ -1,61 +1,59 @@
-class SuperMath {
-  check(obj) {
-    if (this.isValidOperator(obj.znak)) {
-      const userResponse = prompt(
-        `Do you want to perform ${obj.znak} with ${obj.X} and ${obj.Y}? (yes/no)`
-      );
-
-      if (userResponse.toLowerCase() === "yes") {
-        const result = this[obj.znak](obj.X, obj.Y);
-        console.log(`Result: ${result}`);
-      } else {
-        this.input();
-      }
-    } else {
-      console.log(
-        "Invalid operator. Please enter a valid mathematical operator (+, -, /, *, %)."
-      );
-      this.input();
+class Hamburger {
+  constructor(size, filling) {
+    this.size = size;
+    if (this.size === "small") {
+      this.price = 50;
+      this.calories = 20;
+    } else if (this.size === "big") {
+      this.price = 100;
+      this.calories = 40;
+    }
+    this.filling = filling;
+    if (this.filling === "cheese") {
+      this.price += 10;
+      this.calories += 20;
+    } else if (this.filling === "salad") {
+      this.price += 20;
+      this.calories += 5;
+    } else if (this.filling === "fries") {
+      this.price += 15;
+      this.calories += 10;
     }
   }
 
-  input() {
-    const newX = parseFloat(prompt("Enter a new value for X:"));
-    const newY = parseFloat(prompt("Enter a new value for Y:"));
-    const newOperator = prompt(
-      "Enter a mathematical operator (+, -, /, *, %):"
-    );
-
-    this.check({ X: newX, Y: newY, znak: newOperator });
+  addTopping(topping) {
+    this.topping = topping;
+    if (this.topping === "mayo") {
+      this.price += 20;
+      this.calories += 10;
+    } else if (this.topping === "herbs") {
+      this.price += 15;
+    }
   }
 
-  isValidOperator(operator) {
-    const validOperators = ["+", "-", "/", "*", "%"];
-    return validOperators.includes(operator);
+  calculatePrice() {
+    console.log(`Price: ${this.price}`);
   }
 
-  "+"(x, y) {
-    return x + y;
-  }
-
-  "-"(x, y) {
-    return x - y;
-  }
-
-  "/"(x, y) {
-    return x / y;
-  }
-
-  "*"(x, y) {
-    return x * y;
-  }
-
-  "%"(x, y) {
-    return x % y;
+  calculateCalories() {
+    console.log(`Calories: ${this.calories}`);
   }
 }
 
-const mathCalculator = new SuperMath();
-const mathObject = { X: 12, Y: 3, znak: "/" };
+const fillings = ["cheese", "salad", "fries"];
 
-mathCalculator.check(mathObject);
+const smallHamburger = new Hamburger("small", fillings[0]);
+smallHamburger.addTopping("mayo");
+smallHamburger.addTopping("mayo");
+smallHamburger.calculateCalories();
+smallHamburger.calculatePrice();
+smallHamburger.addTopping("herbs");
+smallHamburger.calculateCalories();
+smallHamburger.calculatePrice();
+
+const bigHamburger = new Hamburger("big", fillings[2]);
+bigHamburger.calculateCalories();
+bigHamburger.calculatePrice();
+bigHamburger.addTopping("mayo");
+bigHamburger.calculateCalories();
+bigHamburger.calculatePrice();
