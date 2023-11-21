@@ -1,121 +1,61 @@
-class Student {
-  constructor(name, surname, birthYear, marksArray) {
-    this.name = name;
-    this.surname = surname;
-    this.birthYear = birthYear;
-    this.marksArray = marksArray;
-    this.year = 2023;
-    this.attendanceArray = new Array(25);
-    this.currentIndex = 0;
-    this.averageMark;
-  }
+class SuperMath {
+  check(obj) {
+    if (this.isValidOperator(obj.znak)) {
+      const userResponse = prompt(
+        `Do you want to perform ${obj.znak} with ${obj.X} and ${obj.Y}? (yes/no)`
+      );
 
-  getAge() {
-    this.year - this.birthYear;
-  }
-
-  getAverageMark() {
-    this.averageMark =
-      this.marksArray.reduce((sum, cur) => sum + cur, 0) /
-      this.marksArray.length;
-  }
-
-  present() {
-    if (this.currentIndex < this.attendanceArray.length) {
-      this.attendanceArray[this.currentIndex++] = true;
+      if (userResponse.toLowerCase() === "yes") {
+        const result = this[obj.znak](obj.X, obj.Y);
+        console.log(`Result: ${result}`);
+      } else {
+        this.input();
+      }
     } else {
-      console.log("Attendance array is full!");
+      console.log(
+        "Invalid operator. Please enter a valid mathematical operator (+, -, /, *, %)."
+      );
+      this.input();
     }
   }
 
-  absent() {
-    if (this.currentIndex < this.attendanceArray.length) {
-      this.attendanceArray[this.currentIndex++] = false;
-    } else {
-      console.log("Attendance array is full!");
-    }
+  input() {
+    const newX = parseFloat(prompt("Enter a new value for X:"));
+    const newY = parseFloat(prompt("Enter a new value for Y:"));
+    const newOperator = prompt(
+      "Enter a mathematical operator (+, -, /, *, %):"
+    );
+
+    this.check({ X: newX, Y: newY, znak: newOperator });
   }
 
-  summary() {
-    this.averageAttendance =
-      this.attendanceArray.filter((el) => el === true).length /
-      this.attendanceArray.length;
-    if (this.averageMark > 90 && this.averageAttendance > 0.9) {
-      console.log("Excellent!");
-    } else if (this.averageMark > 90 || this.averageAttendance > 0.9) {
-      console.log("Good, but you can do better!");
-    } else {
-      console.log("That's really bad attendance!");
-    }
+  isValidOperator(operator) {
+    const validOperators = ["+", "-", "/", "*", "%"];
+    return validOperators.includes(operator);
+  }
+
+  "+"(x, y) {
+    return x + y;
+  }
+
+  "-"(x, y) {
+    return x - y;
+  }
+
+  "/"(x, y) {
+    return x / y;
+  }
+
+  "*"(x, y) {
+    return x * y;
+  }
+
+  "%"(x, y) {
+    return x % y;
   }
 }
 
-const dan = new Student("Bohdan", "Dmytrenko", 1996, [100, 60, 82]);
-dan.present();
-dan.present();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.present();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.absent();
-dan.getAverageMark();
+const mathCalculator = new SuperMath();
+const mathObject = { X: 12, Y: 3, znak: "/" };
 
-dan.summary();
-
-console.log(dan);
-
-const vlad = new Student(
-  "Vladislav",
-  "Shevchenko",
-  1996,
-  [100, 60, 82, 90, 90, 90, 90, 100, 100, 100, 100, 100, 100, 100]
-);
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.present();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-vlad.absent();
-
-vlad.getAverageMark();
-
-vlad.summary();
-
-console.log(vlad);
+mathCalculator.check(mathObject);
