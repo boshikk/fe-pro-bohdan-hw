@@ -1,48 +1,50 @@
 class Student {
+  year = 2023;
+  attendanceArray = new Array(25);
+  currentIndex = 0;
+
   constructor(name, surname, birthYear, marksArray) {
     this.name = name;
     this.surname = surname;
     this.birthYear = birthYear;
     this.marksArray = marksArray;
-    this.year = 2023;
-    this.attendanceArray = new Array(25);
-    this.currentIndex = 0;
-    this.averageMark;
+    this.averageMark = this.getAverageMark();
   }
 
   getAge() {
-    this.year - this.birthYear;
+    return this.year - this.birthYear;
   }
 
   getAverageMark() {
-    this.averageMark =
+    return (
       this.marksArray.reduce((sum, cur) => sum + cur, 0) /
-      this.marksArray.length;
+      this.marksArray.length
+    );
+  }
+
+  markAttendance(isPresent) {
+    if (this.currentIndex < this.attendanceArray.length) {
+      this, (this.attendanceArray[this.currentIndex++] = isPresent);
+    } else {
+      console.log("Attendance array is full!");
+    }
   }
 
   present() {
-    if (this.currentIndex < this.attendanceArray.length) {
-      this.attendanceArray[this.currentIndex++] = true;
-    } else {
-      console.log("Attendance array is full!");
-    }
+    this.markAttendance(true);
   }
 
   absent() {
-    if (this.currentIndex < this.attendanceArray.length) {
-      this.attendanceArray[this.currentIndex++] = false;
-    } else {
-      console.log("Attendance array is full!");
-    }
+    this.markAttendance(false);
   }
 
   summary() {
-    this.averageAttendance =
+    const averageAttendance =
       this.attendanceArray.filter((el) => el === true).length /
       this.attendanceArray.length;
-    if (this.averageMark > 90 && this.averageAttendance > 0.9) {
+    if (this.getAverageMark() > 90 && averageAttendance > 0.9) {
       console.log("Excellent!");
-    } else if (this.averageMark > 90 || this.averageAttendance > 0.9) {
+    } else if (this.getAverageMark() > 90 || averageAttendance > 0.9) {
       console.log("Good, but you can do better!");
     } else {
       console.log("That's really bad attendance!");
