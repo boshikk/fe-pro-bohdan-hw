@@ -1,41 +1,15 @@
-const colors = [
-  "color-1",
-  "color-2",
-  "color-3",
-  "color-4",
-  "color-5",
-  "color-6",
-  "color-7",
-  "color-8",
-  "color-9",
-  "color-10",
-];
+const array = [1, 2, 3, 4, 5];
+// const doubledArray = array.map((el) => el * 2);
+// console.log(doubledArray);
 
-const users = [
-  { name: "Slava", color: "color-4" },
-  { name: "Lena", color: "color-7" },
-];
-
-const addUser = (userName) => {
-  const usedColors = users.map((user) => user.color);
-
-  const availableColors = colors.filter((color) => !usedColors.includes(color));
-
-  if (availableColors.length > 0) {
-    const randomColor =
-      availableColors[Math.floor(Math.random() * availableColors.length)];
-    const newUser = { name: userName, color: randomColor };
-    users.push(newUser);
+const mapFunc = (arr, cb) => {
+  const result = [];
+  for (const element of arr) {
+    result.push(cb(element));
   }
+  return result;
 };
 
-addUser("Dan");
-addUser("Cindy");
-addUser("Deborah");
-addUser("James");
-addUser("John");
-addUser("Victor");
-addUser("Vlad");
-addUser("Sean");
-addUser("Eren");
-console.log(users);
+const callBack = (el) => el * 10;
+const doubledArr = mapFunc(array, callBack);
+console.log(doubledArr);
