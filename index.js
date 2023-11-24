@@ -1,15 +1,15 @@
 const array = [1, 2, 3, 4, 5];
-// const doubledArray = array.map((el) => el * 2);
-// console.log(doubledArray);
 
-const mapFunc = (arr, cb) => {
-  const result = [];
+// const sum = array.reduce((sum, cur) => sum + cur, 0);
+// console.log(sum);
+
+const myOwnReduce = (arr, cb, initialValue) => {
+  let accumulator = initialValue;
   for (const element of arr) {
-    result.push(cb(element));
+    accumulator = cb(accumulator, element);
   }
-  return result;
+  return accumulator;
 };
+const myCallback = (sum, cur) => sum * cur;
 
-const callBack = (el) => el * 10;
-const doubledArr = mapFunc(array, callBack);
-console.log(doubledArr);
+console.log(myOwnReduce(array, myCallback, 1));
