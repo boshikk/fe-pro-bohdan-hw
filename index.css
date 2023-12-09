@@ -28,3 +28,16 @@ h1 {
   border-radius: 10rem;
   box-shadow: 0.2rem 0.2rem 1rem #000;
 }
+
+.form {
+  width: 40rem auto;
+  margin: 5rem;
+}
+
+input {
+  margin-bottom: 2rem;
+}
+
+#info-div {
+  display: none;
+}
