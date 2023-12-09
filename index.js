@@ -1,19 +1,15 @@
-const imageFileNames = [
-  "1.jpg",
-  "2.jpg",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.jpg",
-  "7.jpg",
-  "8.jpg",
-  "9.jpg",
-];
+const redirectToSite = (url) => {
+  if (!/^https?:\/\//i.test(url)) {
+    url = "http://" + url;
+  }
 
-const randomIndex = Math.floor(Math.random() * imageFileNames.length);
+  window.location.href = url;
+};
 
-const randomImageFileName = imageFileNames[randomIndex];
-console.log(randomImageFileName);
+document
+  .getElementById("redirectToSite1")
+  .addEventListener("click", () => redirectToSite("www.google.com"));
 
-const randomImage = document.getElementById("random-image");
-randomImage.src = `images/${randomImageFileName}`;
+document
+  .getElementById("redirectToSite2")
+  .addEventListener("click", () => redirectToSite("developer.mozilla.org"));
