@@ -1,44 +1,21 @@
-document.getElementById("saveButton").addEventListener("click", displayData);
+function generateList(array) {
+  const ul = document.createElement("ul");
 
-function displayData() {
-  const form = document.getElementById("registrationForm");
-  const userDataDiv = document.getElementById("userData");
-  userDataDiv.innerHTML = "<h2>User Data:</h2>";
+  for (const item of array) {
+    const li = document.createElement("li");
 
-  const formData = {
-    "First Name": document.getElementById("firstName").value,
-    "Last Name": document.getElementById("lastName").value,
-    "Date of Birth": document.getElementById("birthdate").value,
-    Gender:
-      document.querySelector(`input[name="gender"]:checked`)?.value ||
-      "Not mentioned",
-    City: document.getElementById("city").value,
-    Address: document.getElementById("address").value,
-    Languages: getSelectedLanguages(),
-  };
+    if (Array.isArray(item)) {
+      li.appendChild(generateList(item));
+    } else {
+      li.textContent = item;
+    }
 
-  const table = document.createElement("table");
-
-  for (const [key, value] of Object.entries(formData)) {
-    const row = table.insertRow();
-    const cell1 = row.insertCell(0);
-    const cell2 = row.insertCell(1);
-    cell1.textContent = key;
-    cell2.textContent = value;
+    ul.appendChild(li);
   }
 
-  userDataDiv.appendChild(table);
+  return ul;
 }
 
-function getSelectedLanguages() {
-  const selectedLanguages = [];
-  const checkboxes = document.querySelectorAll(
-    `input[name="languages"]:checked`
-  );
-  checkboxes.forEach((checkbox) => {
-    selectedLanguages.push(checkbox.value);
-  });
-  return selectedLanguages.length > 0
-    ? selectedLanguages.join(", ")
-    : "Not mentioned";
-}
+const data = [1, 2, 3, [1, 2, [1.1, 1.2, 1.3], 3]];
+const myList = generateList(data);
+document.body.appendChild(myList);
