@@ -29,19 +29,27 @@ h1 {
   box-shadow: 0.2rem 0.2rem 1rem #000;
 }
 
-.smiley-container {
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+form {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 400px;
+  margin: 20px auto;
 }
 
-.smiley {
-  cursor: pointer;
-  font-size: 10rem;
-}
-
-.vote-count {
-  text-align: center;
-  font-size: 10rem;
+button {
+  display: block;
+  margin-top: 10px;
 }
