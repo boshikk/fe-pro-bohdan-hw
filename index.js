@@ -1,12 +1,30 @@
-const table = document.createElement("table");
+const smileys = ["😃", "😊", "😄", "😁", "😆"];
+const smileyContainer = document.getElementById("smileyContainer");
+const voteCountElement = document.getElementById("voteCount");
 
-let count = 1;
-for (let i = 0; i < 10; i++) {
-  const row = table.insertRow();
-  for (let j = 0; j < 10; j++) {
-    const cell = row.insertCell();
-    cell.textContent = count++;
-  }
+let voteCounts = Array(smileys.length).fill(0);
+
+function updateUI() {
+  smileyContainer.innerHTML = "";
+  voteCounts.forEach((count, index) => {
+    const smileyDiv = document.createElement("div");
+    smileyDiv.classList.add("smiley");
+    smileyDiv.textContent = smileys[index];
+    smileyDiv.addEventListener("click", () => castVote(index));
+    smileyContainer.appendChild(smileyDiv);
+  });
+
+  voteCountElement.innerHTML = "";
+  voteCounts.forEach((count, index) => {
+    const countDiv = document.createElement("div");
+    countDiv.textContent = `Votes for ${smileys[index]}: ${count}`;
+    voteCountElement.appendChild(countDiv);
+  });
 }
 
-document.body.appendChild(table);
+function castVote(index) {
+  voteCounts[index]++;
+  updateUI();
+}
+
+updateUI();

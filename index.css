@@ -29,20 +29,19 @@ h1 {
   box-shadow: 0.2rem 0.2rem 1rem #000;
 }
 
-table {
-  border-collapse: collapse;
-  width: 50%;
-  margin: 20px;
+.smiley-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-table,
-th,
-td {
-  border: 1px solid black;
+.smiley {
+  cursor: pointer;
+  font-size: 10rem;
 }
 
-th,
-td {
-  padding: 10px;
+.vote-count {
   text-align: center;
+  font-size: 10rem;
 }
