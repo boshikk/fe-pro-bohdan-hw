@@ -29,15 +29,20 @@ h1 {
   box-shadow: 0.2rem 0.2rem 1rem #000;
 }
 
-.form {
-  width: 40rem auto;
-  margin: 5rem;
+table {
+  border-collapse: collapse;
+  width: 50%;
+  margin: 20px;
 }
 
-input {
-  margin-bottom: 2rem;
+table,
+th,
+td {
+  border: 1px solid black;
 }
 
-#info-div {
-  display: none;
+th,
+td {
+  padding: 10px;
+  text-align: center;
 }

@@ -1,9 +1,12 @@
-const textField = document.getElementById("text-field");
-const infoDiv = document.getElementById("info-div");
+const table = document.createElement("table");
 
-console.log(textField);
-console.log(infoDiv);
+let count = 1;
+for (let i = 0; i < 10; i++) {
+  const row = table.insertRow();
+  for (let j = 0; j < 10; j++) {
+    const cell = row.insertCell();
+    cell.textContent = count++;
+  }
+}
 
-textField.addEventListener("focus", () => (infoDiv.style.display = "block"));
-
-textField.addEventListener("blur", () => (infoDiv.style.display = "none"));
+document.body.appendChild(table);
