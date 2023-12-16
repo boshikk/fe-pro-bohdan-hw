@@ -1,44 +1,39 @@
-document.getElementById("saveButton").addEventListener("click", displayData);
+const options = ["😊", "😄", "😃", "😁", "😆"];
 
-function displayData() {
-  const form = document.getElementById("registrationForm");
-  const userDataDiv = document.getElementById("userData");
-  userDataDiv.innerHTML = "<h2>User Data:</h2>";
+const votingContainer = document.getElementById("voting-container");
 
-  const formData = {
-    "First Name": document.getElementById("firstName").value,
-    "Last Name": document.getElementById("lastName").value,
-    "Date of Birth": document.getElementById("birthdate").value,
-    Gender:
-      document.querySelector(`input[name="gender"]:checked`)?.value ||
-      "Not mentioned",
-    City: document.getElementById("city").value,
-    Address: document.getElementById("address").value,
-    Languages: getSelectedLanguages(),
-  };
+// Initialize vote counts
+const voteCounts = Array.from({ length: options.length }, () => 0);
 
-  const table = document.createElement("table");
+// Create and render smiley elements with containers
+options.forEach((option, index) => {
+  const smileyContainer = document.createElement("div");
+  smileyContainer.classList.add("smiley-container");
 
-  for (const [key, value] of Object.entries(formData)) {
-    const row = table.insertRow();
-    const cell1 = row.insertCell(0);
-    const cell2 = row.insertCell(1);
-    cell1.textContent = key;
-    cell2.textContent = value;
-  }
+  const smileyElement = document.createElement("div");
+  smileyElement.classList.add("smiley");
+  smileyElement.textContent = option;
+  smileyElement.addEventListener("click", () => vote(index));
+  smileyContainer.appendChild(smileyElement);
 
-  userDataDiv.appendChild(table);
+  const voteCountElement = document.createElement("div");
+  voteCountElement.classList.add("vote-count");
+  voteCountElement.textContent = `Votes: ${voteCounts[index]}`;
+  smileyContainer.appendChild(voteCountElement);
+
+  votingContainer.appendChild(smileyContainer);
+});
+
+// Function to handle voting
+function vote(index) {
+  voteCounts[index]++;
+  updateVoteCounts();
 }
 
-function getSelectedLanguages() {
-  const selectedLanguages = [];
-  const checkboxes = document.querySelectorAll(
-    `input[name="languages"]:checked`
-  );
-  checkboxes.forEach((checkbox) => {
-    selectedLanguages.push(checkbox.value);
+// Function to update vote counts
+function updateVoteCounts() {
+  const voteCountElements = document.querySelectorAll(".vote-count");
+  voteCountElements.forEach((element, index) => {
+    element.textContent = `Votes: ${voteCounts[index]}`;
   });
-  return selectedLanguages.length > 0
-    ? selectedLanguages.join(", ")
-    : "Not mentioned";
 }
