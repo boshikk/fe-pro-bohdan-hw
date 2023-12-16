@@ -1,19 +1,17 @@
-document.getElementById("saveButton").addEventListener("click", displayData);
-
-function displayData() {
-  const form = document.getElementById("registrationForm");
+const displayData = () => {
+  const form = document.forms["registrationForm"];
   const userDataDiv = document.getElementById("userData");
   userDataDiv.innerHTML = "<h2>User Data:</h2>";
 
   const formData = {
-    "First Name": document.getElementById("firstName").value,
-    "Last Name": document.getElementById("lastName").value,
-    "Date of Birth": document.getElementById("birthdate").value,
+    "First Name": form.elements["firstName"].value,
+    "Last Name": form.elements["lastName"].value,
+    "Date of Birth": form.elements["birthdate"].value,
     Gender:
       document.querySelector(`input[name="gender"]:checked`)?.value ||
       "Not mentioned",
-    City: document.getElementById("city").value,
-    Address: document.getElementById("address").value,
+    City: form.elements["city"].value,
+    Address: form.elements["address"].value,
     Languages: getSelectedLanguages(),
   };
 
@@ -28,9 +26,11 @@ function displayData() {
   }
 
   userDataDiv.appendChild(table);
-}
 
-function getSelectedLanguages() {
+  console.log(form.elements);
+};
+
+const getSelectedLanguages = () => {
   const selectedLanguages = [];
   const checkboxes = document.querySelectorAll(
     `input[name="languages"]:checked`
@@ -41,4 +41,6 @@ function getSelectedLanguages() {
   return selectedLanguages.length > 0
     ? selectedLanguages.join(", ")
     : "Not mentioned";
-}
+};
+
+document.getElementById("saveButton").addEventListener("click", displayData);
