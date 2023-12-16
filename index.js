@@ -1,43 +1,64 @@
-const images = document.querySelectorAll(".slider-image");
-let currentImageIndex = 0;
+const productsData = {
+  Electronics: [
+    { name: "Laptop", price: 800 },
+    { name: "Smartphone", price: 500 },
+    { name: "Headphones", price: 80 },
+  ],
+  Clothing: [
+    { name: "T-Shirt", price: 20 },
+    { name: "Jeans", price: 50 },
+    { name: "Jacket", price: 120 },
+  ],
+  Books: [
+    { name: "Programming Basics", price: 30 },
+    { name: "Science Fiction Novel", price: 15 },
+    { name: "History Book", price: 25 },
+  ],
+};
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const categories = document.querySelectorAll(".categories li");
+categories.forEach((category) => {
+  category.addEventListener("click", function () {
+    showProducts(this.textContent);
+  });
+});
 
-const showImage = (index) => {
-  images.forEach((image, i) => {
-    if (i === index) {
-      image.style.display = "block";
-    } else {
-      image.style.display = "none";
-    }
+const showProducts = (category) => {
+  const productsContainer = document.querySelector(".products");
+  const productInfoContainer = document.getElementById("productInfo");
+
+  productsContainer.innerHTML = "";
+  productInfoContainer.innerHTML = "";
+
+  const products = productsData[category];
+  products.forEach((product) => {
+    const productItem = document.createElement("div");
+    productItem.innerHTML = `<p>${product.name} - $${product.price}</p>`;
+    productItem.addEventListener("click", function () {
+      showProductInfo(product);
+    });
+    productsContainer.appendChild(productItem);
   });
 };
 
-const prevSlide = () => {
-  if (currentImageIndex > 0) {
-    currentImageIndex--;
-    showImage(currentImageIndex);
-  }
+const showProductInfo = (product) => {
+  const productInfoContainer = document.getElementById("productInfo");
+  productInfoContainer.innerHTML = `
+    <h2>${product.name}</h2>
+    <p>Price: $${product.price}</p>
+    <button id="buyBtn">Buy</button>
+  `;
 
-  prevBtn.style.display = currentImageIndex === 0 ? "none" : "block";
-  nextBtn.style.display = "block";
+  const buyButton = document.getElementById("buyBtn");
+  buyButton.addEventListener("click", function () {
+    buyProduct(product.name);
+  });
 };
 
-const nextSlide = () => {
-  if (currentImageIndex < images.length - 1) {
-    currentImageIndex++;
-    showImage(currentImageIndex);
-  }
-
-  nextBtn.style.display =
-    currentImageIndex === images.length - 1 ? "none" : "block";
-  prevBtn.style.display = "block"; // Always show prevBtn after Next is clicked
+const buyProduct = (productName) => {
+  alert(`You have successfully purchased ${productName}!`);
+  const productsContainer = document.querySelector(".products");
+  const productInfoContainer = document.getElementById("productInfo");
+  productsContainer.innerHTML = "";
+  productInfoContainer.innerHTML = "";
 };
-
-prevBtn.style.display = "none";
-
-prevBtn.addEventListener("click", prevSlide);
-nextBtn.addEventListener("click", nextSlide);
-
-showImage(currentImageIndex);
