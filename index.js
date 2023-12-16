@@ -1,3 +1,6 @@
+const getRandomNumber = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
 const imageFileNames = [
   "1.jpg",
   "2.jpg",
@@ -10,7 +13,7 @@ const imageFileNames = [
   "9.jpg",
 ];
 
-const randomIndex = Math.floor(Math.random() * imageFileNames.length);
+const randomIndex = getRandomNumber(0, imageFileNames.length - 1);
 
 const randomImageFileName = imageFileNames[randomIndex];
 console.log(randomImageFileName);
