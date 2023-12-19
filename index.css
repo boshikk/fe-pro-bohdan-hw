@@ -109,20 +109,28 @@ button:hover {
   background-color: #45a049;
 }
 
-#order-form {
+.order-form {
   display: flex;
   flex-direction: column;
 }
 
-#order-form label {
+.order-form label {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
-#order-form h2 {
+.order-form h2 {
   margin-top: 2rem;
 }
 
-/* .hidden {
-  display: none;
-} */
+.orders-container {
+  margin: 2rem;
+}
+
+.my-orders-btn {
+  margin-left: 2rem;
+}
+
+.delete-order-btn {
+  margin-left: 1.4rem;
+}
