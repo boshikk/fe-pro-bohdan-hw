@@ -16,11 +16,13 @@ const productsData = {
   ],
 };
 
+const showProductsFunc = () => {
+  showProducts(this.textContent);
+};
+
 const categories = document.querySelectorAll(".categories li");
 categories.forEach((category) => {
-  category.addEventListener("click", function () {
-    showProducts(this.textContent);
-  });
+  category.addEventListener("click", () => showProducts(category.textContent));
 });
 
 const showProducts = (category) => {
@@ -34,9 +36,7 @@ const showProducts = (category) => {
   products.forEach((product) => {
     const productItem = document.createElement("div");
     productItem.innerHTML = `<p>${product.name} - $${product.price}</p>`;
-    productItem.addEventListener("click", function () {
-      showProductInfo(product);
-    });
+    productItem.addEventListener("click", () => showProductInfo(product));
     productsContainer.appendChild(productItem);
   });
 };
@@ -50,9 +50,7 @@ const showProductInfo = (product) => {
   `;
 
   const buyButton = document.getElementById("buyBtn");
-  buyButton.addEventListener("click", function () {
-    buyProduct(product.name);
-  });
+  buyButton.addEventListener("click", () => buyProduct(product.name));
 };
 
 const buyProduct = (productName) => {
