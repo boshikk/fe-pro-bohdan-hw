@@ -1,4 +1,4 @@
-const episode1 = [
+const episodeChars = [
   { char: "可是", pinYin: "kěshì" },
   { char: "教训", pinYin: "jiàoxun" },
   { char: "臭小子", pinYin: "chòuxiǎozi" },
@@ -41,5 +41,35 @@ const episode1 = [
   ,
   { char: "无动于衷", pinYin: "wúdòng yúzhōng" },
 ];
-const randomChar = episode1[Math.floor(Math.random() * episode1.length + 1)];
-console.log(randomChar.char, randomChar.pinYin);
+const characterDiv = document.createElement("p");
+characterDiv.classList.add("character");
+
+const container = document.querySelector(".container");
+const startMessage = document.querySelector(".start-message");
+
+container.appendChild(characterDiv);
+
+let usedChars = [];
+
+const generateUniqueRandom = () => {
+  const remainingChars = episodeChars.filter(
+    (char) => !usedChars.includes(char)
+  );
+  if (remainingChars.length === 0) {
+    console.log("No more characters available.");
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * remainingChars.length);
+  const randomChar = remainingChars[randomIndex];
+
+  usedChars.push(randomChar);
+
+  startMessage.innerHTML = "";
+
+  return (characterDiv.innerHTML = `${usedChars[usedChars.length - 1].char} ${
+    usedChars[usedChars.length - 1].pinYin
+  }`);
+};
+
+document.querySelector(".btn").addEventListener("click", generateUniqueRandom);

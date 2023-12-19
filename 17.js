@@ -1,20 +1,14 @@
 const episodeChars = [
-  { char: "挨揍", pinYin: "áizòu" },
-  { char: "大饱眼福", pinYin: "dàbǎo yǎnfú" },
+  { char: "迟早", pinYin: "chízǎo" },
+  { char: "自说自话", pinYin: "zìshuō zìhuà" },
   {
-    char: "冤枉",
-    pinYin: "yuānwang",
+    char: "无所事事",
+    pinYin: "wúsuǒshìshì",
   },
-  { char: "不切实际", pinYin: "bùqiè shíjì" },
-  { char: "夸大其词", pinYin: "kuādà qící" },
-  { char: "平白无故", pinYin: "píngbái wúgù" },
-  { char: "陷害", pinYin: "xiànhài" },
-  { char: "模棱两可", pinYin: "móléng liǎngkě" },
-  { char: "不折不扣", pinYin: "bùzhé bùkòu" },
-  { char: "吃香喝辣", pinYin: "chīxiāng hēlà" },
-  { char: "吩咐", pinYin: "fēnfù" },
-  { char: "火上浇油", pinYin: "huǒshàng jiāoyóu" },
-  { char: "狡辩", pinYin: "jiǎobiàn" },
+  { char: "暗恋", pinYin: "ànliàn" },
+  { char: "分文不取", pinYin: "fēnwénbùqǔ" },
+  { char: "理所当然", pinYin: "lǐsuǒ dāngrán" },
+  { char: "铁石心肠", pinYin: "tiěshíxīncháng" },
 ];
 
 const characterDiv = document.createElement("p");

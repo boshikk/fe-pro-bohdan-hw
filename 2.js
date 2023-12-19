@@ -1,4 +1,4 @@
-const episode2 = [
+const episodeChars = [
   { char: "要紧事", pinYin: "yàojǐnshi" },
   { char: "隐形", pinYin: "yǐnxíng" },
   { char: "千万", pinYin: "qiānwàn" },
@@ -35,5 +35,35 @@ const episode2 = [
   { char: "一别两宽，各生欢喜", pinYin: "yībiéliǎngkuān gèshēnghuānxǐ" },
 ];
 
-const randomChar = episode2[Math.floor(Math.random() * episode2.length)];
-console.log(randomChar.char, randomChar.pinYin);
+const characterDiv = document.createElement("p");
+characterDiv.classList.add("character");
+
+const container = document.querySelector(".container");
+const startMessage = document.querySelector(".start-message");
+
+container.appendChild(characterDiv);
+
+let usedChars = [];
+
+const generateUniqueRandom = () => {
+  const remainingChars = episodeChars.filter(
+    (char) => !usedChars.includes(char)
+  );
+  if (remainingChars.length === 0) {
+    console.log("No more characters available.");
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * remainingChars.length);
+  const randomChar = remainingChars[randomIndex];
+
+  usedChars.push(randomChar);
+
+  startMessage.innerHTML = "";
+
+  return (characterDiv.innerHTML = `${usedChars[usedChars.length - 1].char} ${
+    usedChars[usedChars.length - 1].pinYin
+  }`);
+};
+
+document.querySelector(".btn").addEventListener("click", generateUniqueRandom);

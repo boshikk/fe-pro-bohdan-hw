@@ -6,7 +6,7 @@ const episodeChars = [
     pinYin: "zhōngshēn dàshì",
   },
   { char: "热心肠", pinYin: "rèxīncháng" },
-  { char: "千真万确", pinYin: " qiān zhēn wàn què" },
+  { char: "千真万确", pinYin: "qiān zhēn wàn què" },
 ];
 
 const characterDiv = document.createElement("p");
