@@ -118,3 +118,11 @@ button:hover {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
+
+#order-form h2 {
+  margin-top: 2rem;
+}
+
+/* .hidden {
+  display: none;
+} */
