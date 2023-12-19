@@ -1,17 +1,19 @@
 const images = document.querySelectorAll(".slider-image");
 let currentImageIndex = 0;
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.querySelector(".prevBtn");
+const nextBtn = document.querySelector(".nextBtn");
 
 const showImage = (index) => {
   images.forEach((image, i) => {
-    if (i === index) {
-      image.style.display = "block";
-    } else {
-      image.style.display = "none";
-    }
+    image.style.display = i === index ? "block" : "none";
   });
+};
+
+const adjustButtonDisplay = () => {
+  prevBtn.style.display = currentImageIndex === 0 ? "none" : "block";
+  nextBtn.style.display =
+    currentImageIndex === images.length - 1 ? "none" : "block";
 };
 
 const prevSlide = () => {
@@ -20,8 +22,7 @@ const prevSlide = () => {
     showImage(currentImageIndex);
   }
 
-  prevBtn.style.display = currentImageIndex === 0 ? "none" : "block";
-  nextBtn.style.display = "block";
+  adjustButtonDisplay();
 };
 
 const nextSlide = () => {
@@ -30,9 +31,7 @@ const nextSlide = () => {
     showImage(currentImageIndex);
   }
 
-  nextBtn.style.display =
-    currentImageIndex === images.length - 1 ? "none" : "block";
-  prevBtn.style.display = "block"; // Always show prevBtn after Next is clicked
+  adjustButtonDisplay();
 };
 
 prevBtn.style.display = "none";
