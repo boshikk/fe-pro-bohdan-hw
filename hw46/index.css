@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+  color: antiquewhite;
+}
+
+.container {
+  width: 40rem auto;
+  margin: 10rem;
+  padding: 2rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f96e3;
+  border-radius: 10rem;
+  box-shadow: 0.2rem 0.2rem 1rem #000;
+}
+
+.weather-info {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-info p {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
