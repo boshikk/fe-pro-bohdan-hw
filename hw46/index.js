@@ -13,7 +13,7 @@ const getWeather = async (URL) => {
   <p>Humidity: ${data.main.humidity}%</p>
   <p>Wind speed: ${Math.floor(data.wind.speed)} m/s</p>
   <p>Degrees: ${data.wind.deg}°</p>
-  <p>Icon: <img src='http://openweathermap.org/img/w/${
+  <p>Icon: <img src='https://openweathermap.org/img/w/${
     data.weather[0].icon
   }.png' alt='Weather icon'></p>`;
 
@@ -21,5 +21,5 @@ const getWeather = async (URL) => {
 };
 
 getWeather(
-  "http://api.openweathermap.org/data/2.5/weather?q=TIANJIN&units=metric&APPID=5d066958a60d315387d9492393935c19"
+  "https://api.openweathermap.org/data/2.5/weather?q=TIANJIN&units=metric&APPID=5d066958a60d315387d9492393935c19"
 );
