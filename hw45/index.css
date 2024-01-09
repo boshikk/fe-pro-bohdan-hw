@@ -31,6 +31,7 @@ h1 {
 
 label {
   font-size: 1.4rem;
+  align-self: center;
 }
 
 .post-container {
@@ -46,15 +47,58 @@ label {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  width: 20rem;
+  width: 25rem;
+}
+
+.input-container :first-child {
 }
 
 .post-content {
   font-size: 1.6rem;
 }
 
+.post-span {
+  font-weight: 600;
+  font-size: 2.2rem;
+  letter-spacing: -0.6px;
+}
+
 .comments-button {
   background: none;
   border: none;
   opacity: 0;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.confirm-button {
+  padding: 0.2rem 0.8rem;
+}
+
+.reset-button {
+  padding: 0.2rem 0.8rem;
+}
+
+.title-content {
+  color: brown;
+  font-size: 2rem;
+}
+
+.title-span {
+  font-weight: 600;
+  font-size: 2.4rem;
+  color: #000;
+}
+
+.comment {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.comment span {
+  font-weight: 600;
 }
